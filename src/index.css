@@ -1,0 +1,32 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .dark-mode {
+    background-color: #1a202c;
+    color: #ffffff;
+  }
+
+  .transparent {
+    background-color: transparent;
+  }
+
+.dropdown{
+    @apply  absolute bg-white rounded p-5 pt-3 pb-2 left-0 top-12 min-w-[190px] shadow-md;
+}
+
+.styledDropdown {
+    color: white;
+    background-color: #1a202c;
+}
+
+.search-box {
+    @apply inline-flex flex-row items-center gap-5 shadow-md p-2 pl-5 pr-20;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.37);
+  }
+
