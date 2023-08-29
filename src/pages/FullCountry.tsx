@@ -43,16 +43,16 @@ const FullCountry: React.FC = () => {
     if (country?.borders && country.borders.length > 0) {
       const borderAlphaCodes = country.borders.join(',');
       axios
-        .get<Country[]>(`https://restcountries.com/v2/alpha?codes=${borderAlphaCodes}`)
+        .get(`https://restcountries.com/v2/alpha?codes=${borderAlphaCodes}`)
         .then(response => setBorderCountries(response.data))
         .catch(error => console.error('Error fetching border countries:', error));
     }
   }, [country]);
 
   return (
-    <div>
+    <div className="min-h-[100vh] dark:bg-gray-900 pb-10">
       <button
-        className='flex items-center gap-3 ml-14 m-10 mb-14 pr-5 pl-3 p-1 shadow-md'
+        className=' flex items-center gap-3 ml-14 m-10 mb-14 pr-5 pl-3 p-1 shadow-md'
         style={{boxShadow: '1px 1px 5px 1px rgba(0, 0, 0, 0.37)'}}
         onClick={() => navigate(-1)}
       >
@@ -63,13 +63,13 @@ const FullCountry: React.FC = () => {
         {loading ? (
           <div>Loading...</div>
         ) : country && (
-          <div className='flex gap-20 ml-14'>
+          <div className='countryPage '> 
             <div>
-              <img className='max-w-[400px]' src={country.flag} alt='flag' />
+              <img className='max-w-[400px] mb-10' src={country.flag} alt='flag' />
             </div>
             <div>
               <h1 className='text-3xl font-bold mb-5'>{country.name}</h1>
-              <div className='flex gap-20'>
+              <div className='countryPageInfo flex gap-20'>
                 <div className='flex gap-1 flex-col mb-6'>
                   <p><strong>Native Name:</strong> {country.nativeName}</p>
                   <p><strong>Population:</strong> {country.population.toLocaleString()}</p>
@@ -83,13 +83,13 @@ const FullCountry: React.FC = () => {
                   <p><strong>Languages:</strong> {country.languages.map(language => language.name).join(', ')}</p>
                 </div>
               </div>
-              <div className='flex mb-10'>
-                <strong className='pr-10'>Border Countries:</strong>
+              <div className='borderInfo flex mb-10'>
+                <strong className='BIS pr-10'>Border Countries:</strong>
                 <div className='flex flex-wrap gap-4'>
                   {borderCountries.length > 0 ? (
                     borderCountries.map(borderCountry => (
                       <Link
-                        className='text-base pr-5 pl-3 p-1 shadow-md'
+                        className=' dark:bg-gray-800 text-base pr-5 pl-3 p-1 shadow-md'
                         style={{boxShadow: '0px 0px 3px 1px rgba(0, 0, 0, 0.37)'}}
                         key={borderCountry.name}
                         to={`/country/${borderCountry.name}`}

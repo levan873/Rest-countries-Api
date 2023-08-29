@@ -9,7 +9,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="flex justify-between mt-10 mr-14 ml-14" >
+            <div className="flex flex-wrap gap-10 justify-between mb-10 mt-10 mr-14 ml-14" >
                 <Search value={searchTerm} onChange={setSearchTerm}/>
                 <Filter regionFilter={regionFilter} setRegionFilter={setRegionFilter} />
             </div>
